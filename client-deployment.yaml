@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: mzahid22/clientkuber:1.1.2
+        imagePullPolicy: Always
+        env:
+        - name: SERVER_SERVICE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: server-service-config
+              key: host
