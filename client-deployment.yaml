@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: client
-        image: mzahid22/clientkuber:1.1.2
+        image: mzahid22/clientkubersmallmultiarch:1.0.0
         imagePullPolicy: Always
         env:
         - name: SERVER_SERVICE_HOST
