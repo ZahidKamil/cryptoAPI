@@ -11,7 +11,6 @@
 #include <netdb.h>
 #include <errno.h>
 
-
 #define PORT "8080"
 #define MESSAGE "Hello from client pod\n"
 
@@ -66,6 +65,16 @@ int main() {
         char message[] = "Hello from the client!";
         write(sockfd, message, sizeof(message));
         printf("Message sent to the server...\n");
+
+        // Receive message from the server
+        char buffer[1024];
+        memset(buffer, 0, sizeof(buffer));
+        ssize_t numBytes = read(sockfd, buffer, sizeof(buffer));
+        if (numBytes > 0) {
+            printf("Received message from server: %s\n", buffer);
+        } else {
+            perror("Error receiving message from server");
+        }
 
         freeaddrinfo(servinfo);
         close(sockfd);

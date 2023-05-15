@@ -26,7 +26,7 @@ int main() {
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = INADDR_ANY;
-    server_addr.sin_port = htons(PORT);
+        server_addr.sin_port = htons(PORT);
 
     // Bind the socket
     if (bind(server_fd, (const struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
@@ -57,7 +57,7 @@ int main() {
         // Read the message from the client
         memset(buffer, 0, BUFFER_SIZE);
         read_bytes = read(client_fd, buffer, BUFFER_SIZE);
-        
+
         if (read_bytes < 0) {
             perror("read failed");
             close(client_fd);
@@ -67,8 +67,13 @@ int main() {
             close(client_fd);
             continue;
         }
-        
-        printf("Received message: %s\n", buffer);
+
+        printf("Received message from client: %s\n", buffer);
+
+        // Send message to the client
+        char message[] = "Hello from the server!";
+        write(client_fd, message, sizeof(message));
+        printf("Message sent to the client\n");
 
         // Close the client socket
         close(client_fd);
@@ -79,3 +84,4 @@ int main() {
 
     return 0;
 }
+

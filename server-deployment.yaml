@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: mzahid22/serverkubersmallmultiarch:1.0.0
+        image: mzahid22/serverkubersmallmultiarch:1.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
