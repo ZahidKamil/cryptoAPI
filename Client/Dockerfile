@@ -24,3 +24,9 @@ COPY --from=builder /app/client /app/client
 
 # Set the entrypoint
 ENTRYPOINT [ "./client" ]
+
+#sudo docker build -t node_test:1.0.0 .
+#sudo docker build . -t cpp_test:1.0.0
+#Build: sudo docker build build_context -t name:version
+#sudo docker tag clientkubersmall:1.0.1 mzahid22/clientkubersmall:1.0.1
+#sudo docker push mzahid22/clientkubersmall:1.0.1

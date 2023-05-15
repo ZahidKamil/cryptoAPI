@@ -1,0 +1,1 @@
+add_library(sha rfc6234/hkdf.c rfc6234/hmac.c rfc6234/sha1.c rfc6234/sha224-256.c rfc6234/sha384-512.c rfc6234/shatest.c rfc6234/usha.c)
